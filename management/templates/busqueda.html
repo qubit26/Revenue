@@ -1,0 +1,190 @@
+{% extends 'layouts/main.html' %}
+
+{% block title %}Búsqueda | Revenue{% endblock %}
+
+{% block content %}
+ <!-- Main Content -->
+ <div id="content">
+
+    {% include 'includes/topbar.html' %}
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <div class="row" style="height:100vh;">
+            {% comment %} Búsqueda {% endcomment %}
+            <div class="col-xl-9 p-2">
+                <h1 class="h3 mb-4 text-gray-800">Búsqueda</h1>
+
+                {% comment %} Ofertas {% endcomment %}
+                <a href="#" class="text-decoration-none">
+                    <div class="card mb-4 border-left-success">
+                        <div class="card-header font-weight-bold text-gray-800">
+                            Lorem ipsum dolor sit amet,
+                        </div>
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto mr-4">
+                                    {% load static %}
+                                    <img src="{% static 'img/papel.jpg' %}" class="rounded" width="255px"/>
+                                </div>
+                                <div class="col">
+                                    <p class="lead text-gray-900">
+                                        Nullam congue aliquet felis eu posuere. In imperdiet posuere purus, vitae mattis metus finibus sed. Integer vel viverra tortor. Curabitur sem mi, feugiat nec quam et, posuere semper metus.
+                                    </p>
+                                    <div class="row justify-content-between align-items-center">
+                                        <div class="col-auto">
+                                            <p class="text-success text-lg">
+                                                <strong>5.00 <span>$</span></strong>
+                                            </p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <span class="badge bg-success text-white">Papel</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="text-decoration-none">
+                    <div class="card mb-4 border-left-success">
+                        <div class="card-header font-weight-bold text-gray-800">
+                            Fusce justo erat, elementum dictum
+                        </div>
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto mr-4">
+                                    {% load static %}
+                                    <img src="{% static 'img/latas.jpg' %}" class="rounded" width="255px"/>
+                                </div>
+                                <div class="col">
+                                    <p class="lead text-gray-900">
+                                        Mauris vehicula arcu eu velit vestibulum efficitur. Vivamus eu ipsum euismod, convallis ex nec, pellentesque nibh. Praesent
+                                    </p>
+                                    <div class="row justify-content-between align-items-center">
+                                        <div class="col-auto">
+                                            <p class="text-success text-lg">
+                                                <strong>5.00 <span>$</span></strong>
+                                            </p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <span class="badge bg-success text-white">Metal</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="text-decoration-none">
+                    <div class="card mb-4 border-left-success">
+                        <div class="card-header font-weight-bold text-gray-800">
+                            Mauris vehicula arcu eu velit vestibulum efficitur.
+                        </div>
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto mr-4">
+                                    {% load static %}
+                                    <img src="{% static 'img/plastico.jpg' %}" class="rounded" width="255px"/>
+                                </div>
+                                <div class="col">
+                                    <p class="lead text-gray-900">
+                                        Quisque euismod consequat odio, et viverra tellus euismod eget. Vestibulum cursus laoreet ipsum, eget tincidunt orci fermentum sed. Vestibulum eget consequat dui. Praesent iaculis fermentum ultrices.
+                                    </p>
+                                    <div class="row justify-content-between align-items-center">
+                                        <div class="col-auto">
+                                            <p class="text-success text-lg">
+                                                <strong>5.00 <span>$</span></strong>
+                                            </p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <span class="badge bg-success text-white">Plástico</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="text-decoration-none">
+                    <div class="card mb-4 border-left-success">
+                        <div class="card-header font-weight-bold text-gray-800">
+                            In imperdiet posuere purus, vitae
+                        </div>
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto mr-4">
+                                    {% load static %}
+                                    <img src="{% static 'img/carton.jpg' %}" class="rounded" width="255px"/>
+                                </div>
+                                <div class="col">
+                                    <p class="lead text-gray-900">
+                                        Suspendisse ac porttitor neque, vitae tincidunt odio. In placerat accumsan neque, vitae condimentum tortor facilisis vel. 
+                                    <div class="row justify-content-between align-items-center">
+                                        <div class="col-auto">
+                                            <p class="text-success text-lg">
+                                                <strong>5.00 <span>$</span></strong>
+                                            </p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <span class="badge bg-success text-white">Cartón</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="text-decoration-none">
+                    <div class="card mb-4 border-left-success">
+                        <div class="card-header font-weight-bold text-gray-800">
+                            Etiam sit amet risus a purus ullamcorper ornare
+                        </div>
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto mr-4">
+                                    {% load static %}
+                                    <img src="{% static 'img/vidrio.jpg' %}" class="rounded" width="255px"/>
+                                </div>
+                                <div class="col">
+                                    <p class="lead text-gray-900">
+                                        ullam congue aliquet felis eu posuere. In imperdiet posuere purus, vitae mattis metus finibus sed. Integer vel viverra tortor. Curabitur sem mi, feugiat nec quam et, posuere semper metus. Etiam auctor sem odio, ut posuere tortor dapibus in. 
+                                    <div class="row justify-content-between align-items-center">
+                                        <div class="col-auto">
+                                            <p class="text-success text-lg">
+                                                <strong>5.00 <span>$</span></strong>
+                                            </p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <span class="badge bg-success text-white">Vidrio</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            {% comment %} Filtros {% endcomment %}
+            <div class="col-xl-3 p-2">
+                <h4 class="h5 mb-4 text-gray-700">Filtros</h4>
+
+                {% comment %} Formulario para los filtros {% endcomment %}
+                <form id="filtro">
+                    <label for="filtroPrecio" class="form-label">Filtrar por precio</label>
+                    <br>
+                    <input type="range" min="0" max="10" steps="1" class="form-range w-100" id="filtroPrecio">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+{% endblock  %}
