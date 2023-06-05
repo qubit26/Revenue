@@ -1,0 +1,192 @@
+{% extends 'layouts/main.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+ <!-- Main Content -->
+ <div id="content">
+
+    {% include 'includes/topbar.html' %}
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-4 text-gray-800">¡Bienvenido, @usuario! ¿Que deseas reciclar?</h1>
+
+        {% comment %} Sección de categorías de reciclaje {% endcomment %}
+        <div class="row">
+            <div class="col-xl-4 col-md-6 mb-4">
+                <a href="#" class="text-decoration-none">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800 text-decoration-none">Plástico</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-wine-bottle fa-2x text-decoration-none"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xl-4 col-md-6 mb-4">
+                <a href="#" class="text-decoration-none">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800 text-decoration-none">Vidrio</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-glass-martini-alt fa-2x text-decoration-none"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xl-4 col-md-6 mb-4">
+                <a href="#" class="text-decoration-none">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800 text-decoration-none">Papel</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-sticky-note fa-2x text-decoration-none"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-4 col-md-6 mb-4">
+                <a href="#" class="text-decoration-none">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800 text-decoration-none">Cartón</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-box-open fa-2x text-decoration-none"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xl-4 col-md-6 mb-4">
+                <a href="#" class="text-decoration-none">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800 text-decoration-none">Metal</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-trash-alt fa-2x text-decoration-none"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xl-4 col-md-6 mb-4">
+                <a href="#" class="text-decoration-none">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800 text-decoration-none">Otros</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-recycle fa-2x text-decoration-none"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% comment %} Fin Sección de categorías de reciclaje {% endcomment %}
+
+        <hr>
+
+        {% comment %} Sección de últimas publicaciones {% endcomment %}
+        <h2 class="h3 mb-4 text-gray-800">Últimas publicaciones</h2>
+        
+        <div class="row">
+            <div class="col-xl-6 col-md-1">
+                <a href="#" class="text-decoration-none">
+                    <div class="card mb-4 border-left-success">
+                        <div class="card-header font-weight-bold text-gray-800">
+                            Lorem ipsum dolor sit amet,
+                        </div>
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto mr-4">
+                                    {% load static %}
+                                    <img src="{% static 'img/papel.jpg' %}" class="rounded" width="255px"/>
+                                </div>
+                                <div class="col">
+                                    <p class="lead text-gray-900">
+                                        Mauris porta bibendum odio nec placerat. Aliquam aliquet vitae neque.
+                                    </p>
+                                    <p class="text-success text-lg">
+                                        <strong>5.00 <span>$</span></strong>
+                                    </p>
+                                    <p class="small text-gray-600">Papel</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xl-6 col-md-1">
+                <a href="#" class="text-decoration-none">
+                    <div class="card mb-4 border-left-success">
+                        <div class="card-header font-weight-bold text-gray-800">
+                            Vivamus eu ipsum euismod
+                        </div>
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto mr-4">
+                                    {% load static %}
+                                    <img src="{% static 'img/latas.jpg' %}" class="rounded" width="255px"/>
+                                </div>
+                                <div class="col">
+                                    <p class="lead text-gray-900">
+                                        Phasellus tristique tempor erat ut dictum. Sed sollicitudin nunc vel euismod suscipit.
+                                    </p>
+                                    <p class="text-success text-lg">
+                                        <strong>7.50 <span>$</span></strong>
+                                    </p>
+                                    <p class="small text-gray-600">Metal</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% comment %} Fin de la sección de últimas publicaciones {% endcomment %}
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+{% endblock %}
