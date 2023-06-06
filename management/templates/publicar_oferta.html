@@ -12,16 +12,17 @@
     <div class="container-fluid">
         <div class="row d-flex justify-content-center">
             <div class="col-xl-6">
-                <div class="card border-left-success shadow h-100 py-2">
+                <div class="card border-left-success shadow h-100 py-2 mb-4">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center justify-content-center">
                             <div class="col-auto">
-                                <h1 class="h3 mb-4 text-gray-800 text-center">Publicar Oferta</h1>
+                                <h1 class="h3 mb-4 text-gray-800 text-center">Crear Oferta</h1>
                             </div>
                         </div>
                         <hr>
                         <form id="formOferta" method="POST">
                             {% csrf_token %}
+                            {% comment %} Sección de Cantidad y Valor de la Oferta {% endcomment %}
                             <div class="mb-3">
                                 <div class="row d-flex justify-content-between">
                                     <div class="col-xl-4">
@@ -35,8 +36,76 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="cantKilos" class="form-label">Min. 1Kg.</label>
-                                <input type="range" class="form-range" id="cantKilos" name="cantKilos" min="1" max="100" steps="1" value="1">
+                                <div class="row d-flex justify-content-between align-items-end">
+                                    <div class="col-xl-8">
+                                        <div class="d-flex justify-content-between mb-4">
+                                            <small class="form-label">Min. 1Kg.</small>
+                                            <small class="form-label">Max. 100Kg.</small>
+                                        </div>
+                                        <input type="range" class="form-range w-100" id="cantKilos" name="cantKilos" min="1" max="100" steps="1" value="1">
+                                    </div>
+                                    <div class="col-xl-4">
+                                        <div class="form-group">
+                                            <label for="valor" class="form-label">Agregar valor</label>
+                                            <input type="text" class="form-control form-control-user"
+                                            id="valor" name="valor" placeholder="0.00$">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% comment %} Fin de Sección de Cantidad y Valor de la Oferta {% endcomment %}
+                            <hr>
+                            {% comment %} Sección Título y Descripción {% endcomment %}
+                            <div class="mb-3">
+                                <h5 class="text-center my-3">Título y Descripción</h5>
+                                <div class="form-group">
+                                    <label for="titulo" class="form-label">Título</label>
+                                    <input type="text" class="form-control w-100" id="titulo" name="titulo" placeholder="Coloca el título aquí">
+                                </div>
+                                <div class="form-group">
+                                    <label for="descripcion" class="form-label">Descripción</label>
+                                    <textarea class="form-control w-100" id="descripcion" name="descripcion" placeholder="Añade la descripción aquí">
+
+                                    </textarea>
+                                </div>
+                            </div>
+                            {% comment %} Fin de Sección Título y Descripción {% endcomment %}
+                            <hr>
+                            {% comment %} Sección de Categoría de material {% endcomment %}
+                            <div class="mb-3">
+                                <h5 class="text-center my-4">Selecciona el material</h5>
+                                <div class="row d-flex justify-content-between">
+                                    <div class="col-xl-4">
+                                        <input type="radio" class="btn-check" name="material" id="plastico" autocomplete="off" style="display:none;">
+                                        <label class="btn btn-outline-success btn-block w-100" for="plastico">Plástico</label>
+                                    </div>
+                                    <div class="col-xl-4">
+                                        <input type="radio" class="btn-check" name="material" id="vidrio" autocomplete="off" style="display:none;">
+                                        <label class="btn btn-outline-success btn-block w-100" for="vidrio">Vidrio</label>
+                                    </div>
+                                    <div class="col-xl-4">
+                                        <input type="radio" class="btn-check" name="material" id="papel" autocomplete="off" style="display:none;">
+                                        <label class="btn btn-outline-success btn-block w-100" for="papel">Papel</label>
+                                    </div>
+                                </div>
+                                <div class="row d-flex justify-content-between my-4">
+                                    <div class="col-xl-4">
+                                        <input type="radio" class="btn-check" name="material" id="carton" autocomplete="off" style="display:none;">
+                                        <label class="btn btn-outline-success btn-block w-100" for="carton">Cartón</label>
+                                    </div>
+                                    <div class="col-xl-4">
+                                        <input type="radio" class="btn-check" name="material" id="metal" autocomplete="off" style="display:none;">
+                                        <label class="btn btn-outline-success btn-block w-100" for="metal">Metal</label>
+                                    </div>
+                                    <div class="col-xl-4">
+                                        <input type="radio" class="btn-check" name="material" id="otros" autocomplete="off" style="display:none;">
+                                        <label class="btn btn-outline-success btn-block w-100" for="otros">Otros</label>
+                                    </div>
+                                </div>
+                            </div>
+                            {% comment %} Fin de Sección de Categoría de material {% endcomment %}
+                            <div class="mt-5">
+                                <button type="submit" class="btn btn-large btn-success btn-block">Publicar Oferta</button>
                             </div>
                         </form>
                     </div>
