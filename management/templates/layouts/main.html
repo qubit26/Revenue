@@ -24,6 +24,9 @@
     <!-- Custom styles for this page -->
     <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
 
+    {% comment %} Estilos del Carrusel {% endcomment %}
+    <link href="{% static 'css/carrusel-detalle.css' %}" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -39,13 +42,13 @@
            {% block content %}{% endblock %}
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            {% comment %} <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Your Website 2020</span>
                     </div>
                 </div>
-            </footer>
+            </footer> {% endcomment %}
             <!-- End of Footer -->
 
         </div>
@@ -95,6 +98,9 @@
 
     <!-- Page level custom scripts -->
     <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+
+    {% comment %} Scripts del Carrusel {% endcomment %}
+    <script src="{% static 'js/carrusel-detalle.js' %}"></script>
 
 </body>
 

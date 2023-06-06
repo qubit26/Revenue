@@ -18,8 +18,65 @@
                     <div class="card-body">
                         <h1 class="h3 mb-4 text-gray-800">Título de la Oferta</h1>
                         {% comment %} Carrusel de Imagenes {% endcomment %}
-                        
+                        <div class="mb-3 d-flex flex-column">
+                            <div class="w-75 my-3 align-self-center">
+                                <img class="img-fluid" src="{% static 'img/plastico.jpg' %}">
+                            </div>
+                            <div class="w-75 my-3 align-self-center">
+                                <div class="row d-flex justify-content-around">
+                                    <div class="col-xl-3">
+                                        <img class="w-100 h-100" src="{% static 'img/plastico.jpg' %}">
+                                    </div>
+                                    <div class="col-xl-3">
+                                        <img class="w-100 h-100" src="{% static 'img/carton.jpg' %}">
+                                    </div>
+                                    <div class="col-xl-3">
+                                        <img class="w-100 h-100" src="{% static 'img/latas.jpg' %}">
+                                    </div>
+                                    <div class="col-xl-3">
+                                        <img class="w-100 h-100" src="{% static 'img/papel.jpg' %}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         {% comment %} Fin del Carrusel de Imagenes {% endcomment %}
+                        <hr>
+                        {% comment %} Descripción de la oferta {% endcomment %}
+                        <div class="mb-3">
+                            <h4 class="h4 mb-4 text-gray-800">Descripción:</h4>
+                            <p id="descripcionDetalle">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dignissim pharetra finibus. Cras mollis nibh purus, sit amet sollicitudin nunc vestibulum a. Donec sollicitudin posuere egestas. Integer vitae posuere velit. Sed vitae porta ipsum. Donec et luctus nisl, eget finibus nulla. Nullam tortor est, suscipit a rutrum eget, lacinia ut nisi.
+                            </p>
+                        </div>
+                        {% comment %} Fin de la descripción de la oferta {% endcomment %}
+
+                        {% comment %} Sección Cantidad y Categoría {% endcomment %}
+                        <div class="mb-3">
+                            <div class="row my-4">
+                                <div class="col-xl-6">
+                                    <p class="h5">Categoría</p>
+                                    <p id="categoriaDetalle">Papel</p>
+                                </div>
+                                <div class="col-xl-6">
+                                    <p class="h5 text-right">Cantidad</p>
+                                    <p id="cantidadDetalle" class="text-right">5 Kg.</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% comment %} Fin de Sección Cantidad y Categoría {% endcomment %}
+
+                        {% comment %} Botones para contactar o enviar mensaje {% endcomment %}
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <button class="btn btn-secondary btn-block btn-lg w-100" id="contactar">Enviar mensaje</button>
+                                </div>
+                                <div class="col-xl-6">
+                                    <button class="btn btn-success btn-block btn-lg w-100" id="comprar">Comprar</button>
+                                </div>
+                            </div>
+                        </div>
+                        {% comment %} Fin de la sección de los botones para contactar o enviar mensaje {% endcomment %}
                     </div>
                 </div>
             </div>
@@ -27,9 +84,17 @@
 
             {% comment %} Sección de detalle del vendedor {% endcomment %}
             <div class="col-xl-4">
-                <div class="card shadow h-100 py-2 mb-4">
+                <div class="card shadow py-2 mb-4">
                     <div class="card-body">
                         <h4 class="h4 mb-4 text-gray-800">Detalles del Vendedor</h4>
+                        <div class="mt-3 d-flex flex-column">
+                            <img src="{% static 'img/undraw_profile.svg' %}" class="w-50 align-self-center rounded-circle">
+                            <h5 class="h5 mb-4 text-gray-900 text-center my-4">John Doe</h5>
+                            <hr>
+                            <p class="h5">Calificación</p>
+                            <p id="calificacion" class="text-warning text-lg">&#9733; &#9733; &#9733; &#9733; &#9733;</p>
+                            <p class="h5">Teléfono de Contacto</p>04xx-xxx-xx-xx</p>
+                        </div>
                     </div>
                 </div>
             </div>
