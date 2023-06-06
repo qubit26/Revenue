@@ -1,0 +1,43 @@
+{% extends 'layouts/main.html' %}
+{% load static %}
+
+{% block title %}Detalle | Revenue{% endblock %}
+
+{% block content %}
+<!-- Main Content -->
+<div id="content">
+
+    {% include 'includes/topbar.html' %}
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <div class="row">
+            {% comment %} Sección de detalle de la Oferta {% endcomment %}
+            <div class="col-xl-8">
+                <div class="card border-left-success shadow h-100 py-2 mb-4">
+                    <div class="card-body">
+                        <h1 class="h3 mb-4 text-gray-800">Título de la Oferta</h1>
+                        {% comment %} Carrusel de Imagenes {% endcomment %}
+                        
+                        {% comment %} Fin del Carrusel de Imagenes {% endcomment %}
+                    </div>
+                </div>
+            </div>
+            {% comment %} Fin de la Sección de detalle de la Oferta {% endcomment %}
+
+            {% comment %} Sección de detalle del vendedor {% endcomment %}
+            <div class="col-xl-4">
+                <div class="card shadow h-100 py-2 mb-4">
+                    <div class="card-body">
+                        <h4 class="h4 mb-4 text-gray-800">Detalles del Vendedor</h4>
+                    </div>
+                </div>
+            </div>
+            {% comment %} Fin de la Sección de detalle del vendedor {% endcomment %}
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+{% endblock %}

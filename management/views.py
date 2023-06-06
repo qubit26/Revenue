@@ -10,3 +10,6 @@ def busqueda(request):
     
 def publish_offer(request):
     return render(request, 'publicar_oferta.html')
+
+def offer_detail(request):
+    return render(request, 'detalle_oferta.html')
