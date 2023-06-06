@@ -7,3 +7,6 @@ def home(request):
 def busqueda(request):
     if request.method == 'GET':    
         return render(request, 'busqueda.html')
+    
+def publish_offer(request):
+    return render(request, 'publicar_oferta.html')

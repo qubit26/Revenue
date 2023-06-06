@@ -1,0 +1,51 @@
+{% extends 'layouts/main.html' %}
+
+{% block title %}Publicar oferta | Revenue{% endblock %}
+
+{% block content %}
+ <!-- Main Content -->
+ <div id="content">
+
+    {% include 'includes/topbar.html' %}
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl-6">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center justify-content-center">
+                            <div class="col-auto">
+                                <h1 class="h3 mb-4 text-gray-800 text-center">Publicar Oferta</h1>
+                            </div>
+                        </div>
+                        <hr>
+                        <form id="formOferta" method="POST">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <div class="row d-flex justify-content-between">
+                                    <div class="col-xl-4">
+                                        <p class="h2 mb-2 text-dark" id="cantKilosDisplay">5 Kg.</p>
+                                        <p class="lead">Cantidad</p>
+                                    </div>
+                                    <div class="col-xl-4">
+                                        <p class="h2 mb-2 text-success text-right" id="cantValorDisplay">+12.50$</p>
+                                        <p class="lead text-right">Valor</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cantKilos" class="form-label">Min. 1Kg.</label>
+                                <input type="range" class="form-range" id="cantKilos" name="cantKilos" min="1" max="100" steps="1" value="1">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+{% endblock %}
