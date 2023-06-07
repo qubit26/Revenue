@@ -7,5 +7,6 @@ urlpatterns = [
     path('publish_offer/', views.publish_offer, name='publish_offer'),
     path('offer_detail/', views.offer_detail, name='offer_detail'),
     path('published_offers/', views.published_offers, name='published_offers'),
-    path('sales_history/', views.sales_history, name='sales_history')
+    path('sales_history/', views.sales_history, name='sales_history'),
+    path('shopping_history/', views.shopping_history, name='shopping_history')
 ]

@@ -19,3 +19,6 @@ def published_offers(request):
 
 def sales_history(request):
     return render(request, 'historial_de_ventas.html')
+
+def shopping_history(request):
+    return render(request, 'historial_de_compras.html')
