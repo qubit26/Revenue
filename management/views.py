@@ -16,3 +16,6 @@ def offer_detail(request):
 
 def published_offers(request):
     return render(request, 'articulos_en_oferta.html')
+
+def sales_history(request):
+    return render(request, 'historial_de_ventas.html')
