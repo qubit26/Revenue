@@ -13,3 +13,6 @@ def publish_offer(request):
 
 def offer_detail(request):
     return render(request, 'detalle_oferta.html')
+
+def published_offers(request):
+    return render(request, 'articulos_en_oferta.html')
