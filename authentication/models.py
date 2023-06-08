@@ -68,6 +68,12 @@ class Usuario(AbstractBaseUser):
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
     
+    def has_perm(self,perm,obj=None):
+        return True
+    
+    def has_module_perms(self,app_label):
+        return True
+    
     def get_email_user(self):
         return self.email.lower()
     

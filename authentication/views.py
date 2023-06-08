@@ -7,15 +7,16 @@ def login(request):
 
 def sign_up(request):
     form_usuario = FormUsuario()
-    print('get')
+    
     if request.method == 'POST':
-        print('post', request.POST)
+        
         form_usuario = FormUsuario(request.POST)
 
         if form_usuario.is_valid():
 
             form_usuario.save()
             return redirect('home')
+        return form_usuario.errors
 
     return render(request, 'sign_up.html', {
         'form_usuario': form_usuario
