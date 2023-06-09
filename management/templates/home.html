@@ -12,7 +12,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-4 text-gray-800">¡Bienvenido, @usuario! ¿Que deseas reciclar?</h1>
+        <h1 class="h3 mb-4 text-gray-800">¡Bienvenido, {{request.user.first_name}} ¿Que deseas reciclar?</h1>
 
         {% comment %} Sección de categorías de reciclaje {% endcomment %}
         <div class="row">
