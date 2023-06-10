@@ -26,7 +26,7 @@ class Oferta(models.Model):
     cantidad = models.PositiveSmallIntegerField(verbose_name='Cantidad', null=False, blank=False, default=1)
     valor = models.DecimalField(verbose_name='Valor', max_digits=3, decimal_places=2, null=False, blank=False)
     material = models.CharField(verbose_name='Material', max_length=20, null=False, blank=False, choices=MATERIAL_CHOICES)
-    imagenes = models.ManyToManyField(ImagenesOferta, verbose_name='Imagenes de la Oferta', blank=False)
+    imagenes = models.ManyToManyField(ImagenesOferta, verbose_name='Imagenes de la Oferta', blank=True)
     usuario = models.ForeignKey(Usuario, verbose_name='Usuario', null=False, blank=False, on_delete=models.CASCADE)
     is_active = models.BooleanField(verbose_name='Activo/Inactivo', default=True)
     vendido = models.BooleanField(verbose_name='Vendido', default=False)

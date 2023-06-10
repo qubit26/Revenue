@@ -20,7 +20,7 @@
                             </div>
                         </div>
                         <hr>
-                        <form id="formOferta" method="POST">
+                        <form id="formOferta" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             {% comment %} Sección de Cantidad y Valor de la Oferta {% endcomment %}
                             <div class="mb-3">
@@ -47,7 +47,7 @@
                                     <div class="col-xl-4">
                                         <div class="form-group">
                                             <label for="valor" class="form-label">Agregar valor</label>
-                                            <input type="text" class="form-control form-control-user"
+                                            <input type="number" class="form-control form-control-user"
                                             id="valor" name="valor" placeholder="0.00$">
                                         </div>
                                     </div>
@@ -76,29 +76,29 @@
                                 <h5 class="text-center my-4">Selecciona el material</h5>
                                 <div class="row d-flex justify-content-between">
                                     <div class="col-xl-4">
-                                        <input type="radio" class="btn-check" name="material" id="plastico" autocomplete="off" style="display:none;">
+                                        <input type="radio" class="btn-check" name="material" id="plastico" value="plastico" autocomplete="off" style="display:none;">
                                         <label class="btn btn-outline-success btn-block w-100" for="plastico">Plástico</label>
                                     </div>
                                     <div class="col-xl-4">
-                                        <input type="radio" class="btn-check" name="material" id="vidrio" autocomplete="off" style="display:none;">
+                                        <input type="radio" class="btn-check" name="material" id="vidrio" value="vidrio" autocomplete="off" style="display:none;">
                                         <label class="btn btn-outline-success btn-block w-100" for="vidrio">Vidrio</label>
                                     </div>
                                     <div class="col-xl-4">
-                                        <input type="radio" class="btn-check" name="material" id="papel" autocomplete="off" style="display:none;">
+                                        <input type="radio" class="btn-check" name="material" id="papel" value="papel" autocomplete="off" style="display:none;">
                                         <label class="btn btn-outline-success btn-block w-100" for="papel">Papel</label>
                                     </div>
                                 </div>
                                 <div class="row d-flex justify-content-between my-4">
                                     <div class="col-xl-4">
-                                        <input type="radio" class="btn-check" name="material" id="carton" autocomplete="off" style="display:none;">
+                                        <input type="radio" class="btn-check" name="material" id="carton" value="carton" autocomplete="off" style="display:none;">
                                         <label class="btn btn-outline-success btn-block w-100" for="carton">Cartón</label>
                                     </div>
                                     <div class="col-xl-4">
-                                        <input type="radio" class="btn-check" name="material" id="metal" autocomplete="off" style="display:none;">
+                                        <input type="radio" class="btn-check" name="material" id="metal" value="metal" autocomplete="off" style="display:none;">
                                         <label class="btn btn-outline-success btn-block w-100" for="metal">Metal</label>
                                     </div>
                                     <div class="col-xl-4">
-                                        <input type="radio" class="btn-check" name="material" id="otros" autocomplete="off" style="display:none;">
+                                        <input type="radio" class="btn-check" name="material" id="otros" value="otros" autocomplete="off" style="display:none;">
                                         <label class="btn btn-outline-success btn-block w-100" for="otros">Otros</label>
                                     </div>
                                 </div>
@@ -109,7 +109,7 @@
                             <div class="mb-3">
                                 <h5 class="text-center my-4">Añade Imagenes</h5>
                                 <label for="imagenes" class="form-label">Cargar Imagenes</label>
-                                <input class="form-control-file" type="file" id="imagenes" multiple>
+                                <input class="form-control-file" type="file" id="imagenes" name="imagenes" multiple>
                             </div>
                             {% comment %} Fin Sección Imagenes de la oferta {% endcomment %}
                             <div class="mt-5">
