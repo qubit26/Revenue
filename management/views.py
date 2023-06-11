@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from management.models import ImagenesOferta, Oferta
+from management.form import formOferta
 
 # Create your views here.
 @login_required(login_url='login')
@@ -15,25 +16,27 @@ def busqueda(request):
 @login_required(login_url='login')
 def publish_offer(request):
 
+    form = formOferta()
+
     if request.method == 'POST':
-        titulo = request.POST['titulo']
-        descripcion = request.POST['descripcion']
-        cantidad = request.POST['cantKilos']
-        valor = request.POST['valor']
-        material = request.POST['material']
-        imagenes = request.FILES['imagenes']
-        usuario = request.user
-
-        oferta = Oferta(titulo=titulo, descripcion=descripcion, cantidad=cantidad, valor=valor, material=material, usuario=usuario)
-        oferta.save()
-
-        for imagen in imagenes:
-            
-            img = ImagenesOferta.objects.create(imagen=imagen)
-            oferta.imagenes.add(img)
+        form = formOferta(request.POST, request.FILES)
+        print(form)
+        if form.is_valid():
+            form.instance.usuario = request.user
+            oferta = form.save()
+            imgs = [
+                ImagenesOferta(imagen=image)
+                for image in request.FILES.getlist('imagenes')
+            ]
+            ImagenesOferta.objects.bulk_create(imgs)
+            oferta.imagenes.add(*imgs)
+            return redirect('home')
+        else:
+            return form.errors
         
-
-    return render(request, 'publicar_oferta.html')
+    return render(request, 'publicar_oferta.html', {
+        'form': form
+    })
 
 @login_required(login_url='login')
 def offer_detail(request):
