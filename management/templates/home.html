@@ -17,7 +17,7 @@
         {% comment %} Sección de categorías de reciclaje {% endcomment %}
         <div class="row">
             <div class="col-xl-4 col-md-6 mb-4">
-                <a href="{% url 'search' %}" class="text-decoration-none">
+                <a href="{% url 'search' %}PLASTICO" class="text-decoration-none">
                     <div class="card border-left-success shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -34,7 +34,7 @@
             </div>
 
             <div class="col-xl-4 col-md-6 mb-4">
-                <a href="#" class="text-decoration-none">
+                <a href="{% url 'search' %}VIDRIO" class="text-decoration-none">
                     <div class="card border-left-success shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -51,7 +51,7 @@
             </div>
 
             <div class="col-xl-4 col-md-6 mb-4">
-                <a href="{% url 'search' %}" class="text-decoration-none">
+                <a href="{% url 'search' %}PAPEL" class="text-decoration-none">
                     <div class="card border-left-success shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -70,7 +70,7 @@
 
         <div class="row">
             <div class="col-xl-4 col-md-6 mb-4">
-                <a href="{% url 'search' %}" class="text-decoration-none">
+                <a href="{% url 'search' %}CARTON" class="text-decoration-none">
                     <div class="card border-left-success shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -87,7 +87,7 @@
             </div>
 
             <div class="col-xl-4 col-md-6 mb-4">
-                <a href="{% url 'search' %}" class="text-decoration-none">
+                <a href="{% url 'search' %}METAL" class="text-decoration-none">
                     <div class="card border-left-success shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -104,7 +104,7 @@
             </div>
 
             <div class="col-xl-4 col-md-6 mb-4">
-                <a href="{% url 'search' %}" class="text-decoration-none">
+                <a href="{% url 'search' %}OTROS" class="text-decoration-none">
                     <div class="card border-left-success shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -128,59 +128,34 @@
         <h2 class="h3 mb-4 text-gray-800">Últimas publicaciones</h2>
         
         <div class="row">
-            <div class="col-xl-6 col-md-1">
-                <a href="#" class="text-decoration-none">
-                    <div class="card mb-4 border-left-success">
-                        <div class="card-header font-weight-bold text-gray-800">
-                            Lorem ipsum dolor sit amet,
-                        </div>
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto mr-4">
-                                    {% load static %}
-                                    <img src="{% static 'img/papel.jpg' %}" class="rounded" width="255px"/>
-                                </div>
-                                <div class="col">
-                                    <p class="lead text-gray-900">
-                                        Mauris porta bibendum odio nec placerat. Aliquam aliquet vitae neque.
-                                    </p>
-                                    <p class="text-success text-lg">
-                                        <strong>5.00 <span>$</span></strong>
-                                    </p>
-                                    <p class="small text-gray-600">Papel</p>
+            {% for oferta_reciente in ofertas_recientes %}
+                <div class="col-xl-6 col-md-1">
+                    <a href="{% url 'offer_detail' oferta_reciente.id %}" class="text-decoration-none">
+                        <div class="card mb-4 border-left-success">
+                            <div class="card-header font-weight-bold text-gray-800">
+                                {{oferta_reciente.titulo}}
+                            </div>
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-auto mr-4">
+                                        {% load static %}
+                                        <img src="{{oferta_reciente.imagenes.first.imagen.url}}" class="rounded" width="255px"/>
+                                    </div>
+                                    <div class="col">
+                                        <p class="lead text-gray-900">
+                                            {{oferta_reciente.descripcion}}
+                                        </p>
+                                        <p class="text-success text-lg">
+                                            <strong>{{oferta_reciente.valor}} <span>$</span></strong>
+                                        </p>
+                                        <p class="small text-gray-600">{{oferta_reciente.material}}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-xl-6 col-md-1">
-                <a href="#" class="text-decoration-none">
-                    <div class="card mb-4 border-left-success">
-                        <div class="card-header font-weight-bold text-gray-800">
-                            Vivamus eu ipsum euismod
-                        </div>
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto mr-4">
-                                    {% load static %}
-                                    <img src="{% static 'img/latas.jpg' %}" class="rounded" width="255px"/>
-                                </div>
-                                <div class="col">
-                                    <p class="lead text-gray-900">
-                                        Phasellus tristique tempor erat ut dictum. Sed sollicitudin nunc vel euismod suscipit.
-                                    </p>
-                                    <p class="text-success text-lg">
-                                        <strong>7.50 <span>$</span></strong>
-                                    </p>
-                                    <p class="small text-gray-600">Metal</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            {% endfor %}
         </div>
         {% comment %} Fin de la sección de últimas publicaciones {% endcomment %}
 
