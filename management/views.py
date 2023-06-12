@@ -69,8 +69,13 @@ def offer_detail(request, pk_offer):
     })
 
 @login_required(login_url='login')
-def published_offers(request):
-    return render(request, 'articulos_en_oferta.html')
+def published_offers(request, pk_usuario):
+
+    ofertas = Oferta.objects.filter(usuario=pk_usuario, is_active=True, vendido=False)
+
+    return render(request, 'articulos_en_oferta.html', {
+        'ofertas': ofertas
+    })
 
 @login_required(login_url='login')
 def sales_history(request):
