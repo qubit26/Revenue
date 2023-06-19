@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from management.models import ImagenesOferta, Oferta
+from django.shortcuts import render, redirect, HttpResponse
+from management.models import ImagenesOferta, Oferta, Venta, Compra
 from management.form import formOferta
 from django.db.models import Q
 
@@ -37,7 +37,6 @@ def publish_offer(request):
 
     if request.method == 'POST':
         form = formOferta(request.POST, request.FILES)
-        print(form)
         if form.is_valid():
             form.instance.usuario = request.user
             oferta = form.save()
@@ -49,7 +48,7 @@ def publish_offer(request):
             oferta.imagenes.add(*imgs)
             return redirect('home')
         else:
-            return form.errors
+            return HttpResponse(form.errors, status_code=400)
         
     return render(request, 'publicar_oferta.html', {
         'form': form
@@ -78,9 +77,65 @@ def published_offers(request, pk_usuario):
     })
 
 @login_required(login_url='login')
+def saled_offer(request, pk_offer):
+
+    oferta = Oferta.objects.get(id=pk_offer)
+    oferta.vendido = True
+    oferta.save()
+
+    return redirect('published_offers', pk_usuario=request.user.id)
+
+@login_required(login_url='login')
+def buy_offer(request, pk_offer):
+
+    try:
+
+        # 1. Se busca primero la oferta que se vendió y se marca como vendido
+        oferta = Oferta.objects.get(id=pk_offer)
+        oferta.vendido = True
+        oferta.save()
+
+
+        # Se crea una nueva venta
+        venta = Venta(oferta=oferta)
+        venta.save()
+        
+
+        # Se registra la compra
+        compra = Compra(venta=venta, comprador=request.user)
+        compra.save()
+        print(compra)
+
+        print('todo ok')
+        # Se redirecciona
+        return redirect('home')
+    except Exception as e:
+        print(e)
+        return e
+
+@login_required(login_url='login')
 def sales_history(request):
-    return render(request, 'historial_de_ventas.html')
+
+    ventas_usuario = Venta.objects.filter(oferta__usuario=request.user)
+
+    return render(request, 'historial_de_ventas.html', {
+        'ventas_usuario': ventas_usuario
+    })
 
 @login_required(login_url='login')
 def shopping_history(request):
-    return render(request, 'historial_de_compras.html')
+
+    compras_usuario = Compra.objects.filter(comprador=request.user)
+
+    return render(request, 'historial_de_compras.html', {
+        'compras_usuario': compras_usuario
+    })
+
+@login_required(login_url='login')
+def delete_offer(request, pk_offer):
+    
+    oferta = Oferta.objects.get(id=pk_offer)
+    oferta.is_active = False
+    oferta.save()
+
+    return redirect('published_offers', pk_usuario=request.user.id)

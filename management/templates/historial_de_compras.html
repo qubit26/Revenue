@@ -36,134 +36,24 @@
                         <tfoot>
                             <tr>
                                 <th>Fecha</th>
-                                <th>Título de la Oferta</th>
+                                <th>Oferta</th>
                                 <th>Material</th>
                                 <th>Cantidad Kg.</th>
                                 <th>Precio</th>
-                                <th>Vendido a</th>
+                                <th>Comprado a</th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            <tr>
-                                <td>24/05/2023</td>
-                                <td>Tubos PCV rotos</td>
-                                <td>Plástico</td>
-                                <td>15Kg</td>
-                                <td>45.50$</td>
-                                <td>John Doe</td>
-                            </tr>
-                            <tr>
-                                <td>24/05/2023</td>
-                                <td>Vendo cartón corrugado</td>
-                                <td>Cartón</td>
-                                <td>7Kg</td>
-                                <td>6.00$</td>
-                                <td>John Doe</td>
-                            </tr>
-                            <tr>
-                                <td>24/05/2023</td>
-                                <td>Vendo cartón corrugado</td>
-                                <td>Cartón</td>
-                                <td>7Kg</td>
-                                <td>6.00$</td>
-                                <td>John Doe</td>
-                            </tr>
-                            <tr>
-                                <td>24/05/2023</td>
-                                <td>Vendo cartón corrugado</td>
-                                <td>Cartón</td>
-                                <td>7Kg</td>
-                                <td>6.00$</td>
-                                <td>John Doe</td>
-                            </tr>
-                            <tr>
-                                <td>24/05/2023</td>
-                                <td>Vendo cartón corrugado</td>
-                                <td>Cartón</td>
-                                <td>7Kg</td>
-                                <td>6.00$</td>
-                                <td>John Doe</td>
-                            </tr>
-                            <tr>
-                                <td>24/05/2023</td>
-                                <td>Vendo cartón corrugado</td>
-                                <td>Cartón</td>
-                                <td>7Kg</td>
-                                <td>6.00$</td>
-                                <td>John Doe</td>
-                            </tr>
-                            <tr>
-                                <td>24/05/2023</td>
-                                <td>Vendo cartón corrugado</td>
-                                <td>Cartón</td>
-                                <td>7Kg</td>
-                                <td>6.00$</td>
-                                <td>John Doe</td>
-                            </tr>
-                            <tr>
-                                <td>24/05/2023</td>
-                                <td>Vendo cartón corrugado</td>
-                                <td>Cartón</td>
-                                <td>7Kg</td>
-                                <td>6.00$</td>
-                                <td>John Doe</td>
-                            </tr>
-                            <tr>
-                                <td>24/05/2023</td>
-                                <td>Vendo cartón corrugado</td>
-                                <td>Cartón</td>
-                                <td>7Kg</td>
-                                <td>6.00$</td>
-                                <td>John Doe</td>
-                            </tr>
-                            <tr>
-                                <td>24/05/2023</td>
-                                <td>Vendo cartón corrugado</td>
-                                <td>Cartón</td>
-                                <td>7Kg</td>
-                                <td>6.00$</td>
-                                <td>John Doe</td>
-                            </tr>
-                            <tr>
-                                <td>24/05/2023</td>
-                                <td>Vendo cartón corrugado</td>
-                                <td>Cartón</td>
-                                <td>7Kg</td>
-                                <td>6.00$</td>
-                                <td>John Doe</td>
-                            </tr>
-                            <tr>
-                                <td>24/05/2023</td>
-                                <td>Vendo cartón corrugado</td>
-                                <td>Cartón</td>
-                                <td>7Kg</td>
-                                <td>6.00$</td>
-                                <td>John Doe</td>
-                            </tr>
-                            <tr>
-                                <td>24/05/2023</td>
-                                <td>Vendo cartón corrugado</td>
-                                <td>Cartón</td>
-                                <td>7Kg</td>
-                                <td>6.00$</td>
-                                <td>John Doe</td>
-                            </tr>
-                            <tr>
-                                <td>24/05/2023</td>
-                                <td>Vendo cartón corrugado</td>
-                                <td>Cartón</td>
-                                <td>7Kg</td>
-                                <td>6.00$</td>
-                                <td>John Doe</td>
-                            </tr>
-                            <tr>
-                                <td>24/05/2023</td>
-                                <td>Vendo cartón corrugado</td>
-                                <td>Cartón</td>
-                                <td>7Kg</td>
-                                <td>6.00$</td>
-                                <td>John Doe</td>
-                            </tr>
+                            {% for compra in compras_usuario %}
+                                <tr>
+                                    <td>{{compra.venta.fecha_venta}}</td>
+                                    <td>{{compra.venta.oferta.titulo}}</td>
+                                    <td>{{compra.venta.oferta.material}}</td>
+                                    <td>{{compra.venta.oferta.cantidad}} Kg</td>
+                                    <td>{{compra.venta.oferta.valor}} $</td>
+                                    <td>{{compra.venta.oferta.usuario.first_name}} {{compra.venta.oferta.usuario.last_name}}</td>
+                                </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>

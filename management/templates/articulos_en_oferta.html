@@ -29,8 +29,8 @@
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink" style>
                                     <div class="dropdown-header">Opciones</div>
                                     <a class="dropdown-item" href="#">Editar Oferta</a>
-                                    <button class="dropdown-item" id="marcarVendido">Marcar como vendido</button>
-                                    <button class="dropdown-item" id="eliminarOferta">Eliminar Oferta</button>
+                                    <a href="{% url 'saled_offer' oferta.id %}" class="dropdown-item" id="marcarVendido">Marcar como vendido</a>
+                                    <a href="{% url 'delete_offer' oferta.id %}" class="dropdown-item" id="eliminarOferta">Eliminar Oferta</a>
                                 </div>
                             </div>
                         </div>
