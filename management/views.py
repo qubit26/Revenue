@@ -1,8 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, HttpResponse
 from management.models import ImagenesOferta, Oferta, Venta, Compra
-from management.form import formOferta
+from management.forms import formOferta, formMensaje
 from django.db.models import Q
+from django.contrib import messages
 
 # Create your views here.
 @login_required(login_url='login')
@@ -48,7 +49,7 @@ def publish_offer(request):
             oferta.imagenes.add(*imgs)
             return redirect('home')
         else:
-            return HttpResponse(form.errors, status_code=400)
+            return HttpResponse(form.errors)
         
     return render(request, 'publicar_oferta.html', {
         'form': form
@@ -62,9 +63,24 @@ def offer_detail(request, pk_offer):
     calificacion_db = offer.usuario.calificacion
     calificacion = estrellas * calificacion_db
 
+    # Form de mensajes
+    form_mensaje = formMensaje()
+
+    if request.method == 'POST':
+        form = formMensaje(request.POST)
+        if form.is_valid():
+            form.instance.emisor = request.user
+            form.instance.receptor = offer.usuario
+            form.save()
+            messages.success(request, 'Tu mensaje ha sido enviado con éxito.')
+            return redirect('offer_detail', pk_offer=offer.id)
+        else:
+            return HttpResponse(form.errors)
+
     return render(request, 'detalle_oferta.html', {
         'offer': offer,
-        'calificacion': calificacion
+        'calificacion': calificacion,
+        'formMensaje': form_mensaje
     })
 
 @login_required(login_url='login')
@@ -108,7 +124,7 @@ def buy_offer(request, pk_offer):
 
         print('todo ok')
         # Se redirecciona
-        return redirect('home')
+        return redirect('articulo_comprado')
     except Exception as e:
         print(e)
         return e
@@ -139,3 +155,7 @@ def delete_offer(request, pk_offer):
     oferta.save()
 
     return redirect('published_offers', pk_usuario=request.user.id)
+
+@login_required(login_url='login')
+def articulo_comprado(request):
+    return render(request, 'articulo_comprado.html')

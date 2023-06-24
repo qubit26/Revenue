@@ -11,6 +11,11 @@ MATERIAL_CHOICES = [
     ('OTROS', 'OTROS')
 ]
 
+NOTIFICACIONES_CHOICES = [
+    ('TE HAN ENVIADO UN MENSAJE', 'TE HAN ENVIADO UN MENSAJE'),
+    ('TU OFERTA HA SIDO COMPRADA', 'TU OFERTA HA SIDO COMPRADA')
+]
+
 # Create your models here.
 class ImagenesOferta(models.Model):
     imagen = models.ImageField(verbose_name='Imagen Oferta', blank=False, null=False, upload_to='img_ofertas/')
@@ -57,3 +62,25 @@ class Compra(models.Model):
         verbose_name = 'Compra'
         verbose_name_plural = 'Compras'
         ordering = ['-id']
+
+class Mensaje(models.Model):
+    emisor = models.ForeignKey(Usuario, verbose_name='Emisor', blank=False, null=False, on_delete=models.CASCADE, related_name='emisor_usuario')
+    receptor = models.ForeignKey(Usuario, verbose_name='Receptor', blank=False, null=False, on_delete=models.CASCADE, related_name='receptor_usuario')
+    mensaje = models.TextField(verbose_name='Mensaje')
+    fecha = models.DateTimeField(verbose_name='Fecha', auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Mensaje'
+        verbose_name_plural = 'Mensajes'
+        ordering = ['-fecha']
+
+class Notificacion(models.Model):
+    oferta = models.ForeignKey(Oferta, verbose_name='Oferta', blank='False', null='False', on_delete=models.CASCADE)
+    mensaje = models.CharField(verbose_name='Mensaje', blank=False, null=False, choices=NOTIFICACIONES_CHOICES, max_length=75)
+    receptor = models.ForeignKey(Usuario, verbose_name='Receptor', blank=False, null=False, on_delete=models.CASCADE)
+    fecha = models.DateTimeField(verbose_name='Fecha', auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Notificacion'
+        verbose_name_plural = 'Notificaciones'
+        ordering = ['-fecha']

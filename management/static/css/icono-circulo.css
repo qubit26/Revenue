@@ -1,0 +1,13 @@
+.icono-circulo {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icono-circulo i {
+    font-size: 3.75rem;
+    color: #fff;
+}

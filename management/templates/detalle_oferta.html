@@ -16,6 +16,16 @@
             <div class="col-xl-8">
                 <div class="card border-left-success shadow h-100 py-2 mb-4">
                     <div class="card-body">
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>{{message}}</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
                         <h1 class="h3 mb-4 text-gray-800">{{offer.titulo}}</h1>
                         {% comment %} Carrusel de Imagenes {% endcomment %}
                         <div class="mb-3 d-flex flex-column">
@@ -63,7 +73,7 @@
                         <div class="mb-3">
                             <div class="row">
                                 <div class="col-xl-6">
-                                    <button class="btn btn-secondary btn-block btn-lg w-100" id="contactar">Enviar mensaje</button>
+                                    <button class="btn btn-secondary btn-block btn-lg w-100" id="contactar" data-toggle="modal" data-target="#btnContactar">Enviar mensaje</button>
                                 </div>
                                 <div class="col-xl-6">
                                     <button class="btn btn-success btn-block btn-lg w-100" id="comprar" data-toggle="modal" data-target="#btnComprar">Comprar</button>
@@ -107,7 +117,35 @@
 </div>
 <!-- End of Main Content -->
 
-{% comment %} Ventana Modal {% endcomment %}
+{% comment %} Ventana Modal Mensaje {% endcomment %}
+<div class="modal fade" id="btnContactar" tabindex="-1" role="dialog" aria-labelledby="btnContactarLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form class="form-mensaje" method="POST">
+            <div class="modal-header">
+                <h5 class="modal-title" id="btnContactarLabel">Enviar mensaje</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="mensaje" class="form-label">{{formMensaje.mensaje.label}}</label>
+                    {{formMensaje.mensaje}}
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <input type="submit" value="Enviar Mensaje" class="btn btn-success" />
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% comment %} Ventana Modal Venta {% endcomment %}
 <div class="modal fade" id="btnComprar" tabindex="-1" role="dialog" aria-labelledby="btnComprarLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

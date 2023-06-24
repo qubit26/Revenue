@@ -1,0 +1,29 @@
+{% extends 'layouts/main.html' %}
+{% load static %}
+
+{% block title %}Compra Realizada | Revenue{% endblock %}
+
+{% block content %}
+<!-- Main Content -->
+<div id="content">
+
+    {% include 'includes/topbar.html' %}
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <div class="row" style="height:100vh;">
+            <div class="col-12 d-flex flex-column justify-content-center align-items-center mt-0">
+                <h1 class="text-center">¡Felicidades por tu Compra!</h1>
+                <h4 class="text-center">Recibirás el producto en la brevedad.</h4>
+                <div class="bg-success icono-circulo mt-5 mb-4">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <a href="{% url 'home' %}" class="btn btn-success">Ir al Inicio</a>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+
+ </div>
+<!-- End of Main Content -->
+{% endblock %}
