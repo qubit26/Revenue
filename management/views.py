@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, HttpResponse
-from management.models import ImagenesOferta, Oferta, Venta, Compra
+from management.models import *
 from management.forms import formOferta, formMensaje
 from django.db.models import Q
 from django.contrib import messages
@@ -121,6 +121,9 @@ def buy_offer(request, pk_offer):
         compra = Compra(venta=venta, comprador=request.user)
         compra.save()
         print(compra)
+
+        # Se notifica al usuario que está publicando la oferta
+        Notificacion.objects.create(oferta=oferta, mensaje=f'{NOTIFICACIONES_CHOICES[1][0]} - {oferta.titulo}', receptor=oferta.usuario)
 
         print('todo ok')
         # Se redirecciona
