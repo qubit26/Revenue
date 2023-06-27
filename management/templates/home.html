@@ -1,6 +1,8 @@
 {% extends 'layouts/main.html' %}
-
+{% load static %}
 {% block title %}Inicio | Revenue{% endblock %}
+
+{% block custom_css %}<link href="{% static 'css/imagenes-oferta.css' %}" rel="stylesheet">{% endblock %}
 
 {% block content %}
  <!-- Main Content -->
@@ -138,8 +140,9 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto mr-4">
-                                        {% load static %}
-                                        <img src="{{oferta_reciente.imagenes.first.imagen.url}}" class="rounded" width="255px"/>
+                                        <div class="contenedor-imagen rounded">
+                                            <img src="{{oferta_reciente.imagenes.first.imagen.url}}"/>
+                                        </div>
                                     </div>
                                     <div class="col">
                                         <p class="lead text-gray-900">

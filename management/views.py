@@ -49,7 +49,10 @@ def publish_offer(request):
             oferta.imagenes.add(*imgs)
             return redirect('home')
         else:
-            return HttpResponse(form.errors)
+            messages.error(request, form.errors)
+            return render(request, 'publicar_oferta.html', {
+                'form': form
+            })
         
     return render(request, 'publicar_oferta.html', {
         'form': form
@@ -71,6 +74,7 @@ def offer_detail(request, pk_offer):
         if form.is_valid():
             form.instance.emisor = request.user
             form.instance.receptor = offer.usuario
+            form.instance.oferta = offer
             form.save()
             messages.success(request, 'Tu mensaje ha sido enviado con éxito.')
             return redirect('offer_detail', pk_offer=offer.id)
@@ -162,3 +166,38 @@ def delete_offer(request, pk_offer):
 @login_required(login_url='login')
 def articulo_comprado(request):
     return render(request, 'articulo_comprado.html')
+
+@login_required(login_url='login')
+def mensajes(request):
+    mensajes_usuario = Mensaje.objects.filter(receptor=request.user.id, visto=False)
+    # Form de mensajes
+    form_mensaje = formMensaje()
+
+    if request.method == 'POST':
+        form = formMensaje(request.POST)
+        if form.is_valid():
+            mensaje = Mensaje.objects.get(id=request.POST['mensaje_or'])
+            form.instance.emisor = request.user
+            form.instance.receptor = mensaje.emisor
+            form.instance.oferta = mensaje.oferta
+            form.save()
+            messages.success(request, 'Tu respuesta ha sido enviada con éxito.')
+            return render(request, 'mensajes.html', {
+                'mensajes': mensajes_usuario,
+                'formMensaje': form_mensaje
+            })
+        else:
+            return HttpResponse(form.errors)    
+
+    return render(request, 'mensajes.html', {
+        'mensajes': mensajes_usuario,
+        'formMensaje': form_mensaje
+    })
+
+@login_required(login_url='login')
+def mensaje_visto(request, pk_mensaje):
+    mensaje = Mensaje.objects.get(id=pk_mensaje)
+    mensaje.visto = True
+    mensaje.save()
+    
+    return redirect('mensajes')

@@ -29,7 +29,7 @@ class Oferta(models.Model):
     titulo = models.CharField(verbose_name='Título', max_length=100, null=False, blank=False)
     descripcion = models.TextField(verbose_name='Descripción', null=True, blank=True)
     cantidad = models.PositiveSmallIntegerField(verbose_name='Cantidad', null=False, blank=False, default=1)
-    valor = models.DecimalField(verbose_name='Valor', max_digits=3, decimal_places=2, null=False, blank=False)
+    valor = models.DecimalField(verbose_name='Valor', max_digits=4, decimal_places=2, null=False, blank=False)
     material = models.CharField(verbose_name='Material', max_length=20, null=False, blank=False, choices=MATERIAL_CHOICES)
     imagenes = models.ManyToManyField(ImagenesOferta, verbose_name='Imagenes de la Oferta', blank=True)
     usuario = models.ForeignKey(Usuario, verbose_name='Usuario', null=False, blank=False, on_delete=models.CASCADE)
@@ -66,7 +66,9 @@ class Compra(models.Model):
 class Mensaje(models.Model):
     emisor = models.ForeignKey(Usuario, verbose_name='Emisor', blank=False, null=False, on_delete=models.CASCADE, related_name='emisor_usuario')
     receptor = models.ForeignKey(Usuario, verbose_name='Receptor', blank=False, null=False, on_delete=models.CASCADE, related_name='receptor_usuario')
+    oferta = models.ForeignKey(Oferta, verbose_name='Oferta', blank=True, null=True, default=None, on_delete=models.PROTECT)
     mensaje = models.TextField(verbose_name='Mensaje')
+    visto = models.BooleanField(verbose_name='Visto', default=False)
     fecha = models.DateTimeField(verbose_name='Fecha', auto_now_add=True)
 
     class Meta:
@@ -78,6 +80,7 @@ class Notificacion(models.Model):
     oferta = models.ForeignKey(Oferta, verbose_name='Oferta', blank='False', null='False', on_delete=models.CASCADE)
     mensaje = models.CharField(verbose_name='Mensaje', blank=False, null=False, choices=NOTIFICACIONES_CHOICES, max_length=75)
     receptor = models.ForeignKey(Usuario, verbose_name='Receptor', blank=False, null=False, on_delete=models.CASCADE)
+    visto = models.BooleanField(verbose_name='Visto', default=False)
     fecha = models.DateTimeField(verbose_name='Fecha', auto_now_add=True)
 
     class Meta:

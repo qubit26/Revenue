@@ -54,7 +54,7 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">200</span>
+                <span class="badge badge-danger badge-counter">{{no_vistas}}</span>
             </a>
             <!-- Dropdown - Alerts -->
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -86,7 +86,7 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-envelope fa-fw"></i>
                 <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">7</span>
+                <span class="badge badge-danger badge-counter">{{no_vistos}}</span>
             </a>
             <!-- Dropdown - Messages -->
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -110,7 +110,7 @@
                     {% endfor %}
                 {% endif %}
                 
-                <a class="dropdown-item text-center small text-gray-500" href="#">Ir a mis mensajes</a>
+                <a class="dropdown-item text-center small text-gray-500" href="{% url 'mensajes' %}">Ir a mis mensajes</a>
             </div>
         </li>
 

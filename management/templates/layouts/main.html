@@ -30,6 +30,8 @@
     {% comment %} Icon circle {% endcomment %}
     <link href="{% static 'css/icono-circulo.css' %}" rel="stylesheet">
 
+    {% block custom_css %}{% endblock %}
+
 </head>
 
 <body id="page-top">
@@ -104,6 +106,8 @@
 
     {% comment %} Scripts del Carrusel {% endcomment %}
     <script src="{% static 'js/carrusel-detalle.js' %}"></script>
+
+    {% block custom_js %}{% endblock %}
 
 </body>
 

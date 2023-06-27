@@ -1,0 +1,20 @@
+.contenedor-imagen-principal {
+    height: 640px;
+    min-height: 640px;
+    overflow: hidden;
+}
+
+.galeria {
+    width: 100%;
+    height: 147px;
+    overflow: hidden;
+}
+
+.activo {
+    border: 3px solid #5cb85c;
+}
+
+.imagen-galeria:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}

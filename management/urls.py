@@ -13,5 +13,7 @@ urlpatterns = [
     path('sales_history/', views.sales_history, name='sales_history'),
     path('shopping_history/', views.shopping_history, name='shopping_history'),
     path('delete_offer/<int:pk_offer>/', views.delete_offer, name='delete_offer'),
-    path('articulo_comprado/', views.articulo_comprado, name='articulo_comprado')
+    path('articulo_comprado/', views.articulo_comprado, name='articulo_comprado'),
+    path('mensajes/', views.mensajes, name='mensajes'),
+    path('mensaje-visto/<int:pk_mensaje>/', views.mensaje_visto, name='mensaje_visto')
 ]

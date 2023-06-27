@@ -29,7 +29,7 @@ class formOferta(forms.ModelForm):
                     'min': '1',
                     'max': '100',
                     'steps': '1',
-                    'value': '1'
+                    'value': '0'
                 }
             ),
             'valor': forms.NumberInput(

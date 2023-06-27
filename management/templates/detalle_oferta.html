@@ -3,6 +3,8 @@
 
 {% block title %}Detalle | Revenue{% endblock %}
 
+{% block custom_css %}<link href="{% static 'css/detalle-oferta.css' %}" rel="stylesheet">{% endblock %}
+
 {% block content %}
 <!-- Main Content -->
 <div id="content">
@@ -29,14 +31,16 @@
                         <h1 class="h3 mb-4 text-gray-800">{{offer.titulo}}</h1>
                         {% comment %} Carrusel de Imagenes {% endcomment %}
                         <div class="mb-3 d-flex flex-column">
-                            <div class="w-75 my-3 align-self-center">
-                                <img class="img-fluid w-100" src="{{offer.imagenes.first.imagen.url}}">
+                            <div class="w-75 my-3 align-self-center contenedor-imagen-principal">
+                                <img class="img-fluid w-100" src="{{offer.imagenes.first.imagen.url}}" id="imagen-principal">
                             </div>
                             <div class="w-75 my-3 align-self-center">
                                 <div class="row d-flex justify-content-around">
                                     {% for imagen_oferta in offer.imagenes.all %}
                                         <div class="col-xl-3">
-                                            <img class="w-100 h-100 galeria" src="{{imagen_oferta.imagen.url}}">
+                                            <div class="galeria">
+                                                <img class="w-100 h-100 imagen-galeria" src="{{imagen_oferta.imagen.url}}">
+                                            </div>
                                         </div>
                                     {% endfor %}
                                 </div>
@@ -166,3 +170,6 @@
     </div>
   </div>
 {% endblock %}
+
+
+{% block custom_js %}<script src="{% static 'js/detalle-oferta.js' %}"></script>{% endblock %}
