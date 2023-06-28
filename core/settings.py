@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://postgres:admin@localhost/postgres',
+        default='postgres://revenue:XIW7h5yrhgf6rVX4mpE96uHbesRXbbMh@dpg-cie99rtph6etu3um4p70-a/revenue_qslf',
         conn_max_age=600
     )
 }
