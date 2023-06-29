@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, HttpResponse
 from management.models import *
 from management.forms import formOferta, formMensaje
+from django.db import transaction
 from django.db.models import Q
 from django.contrib import messages
 
@@ -39,15 +40,19 @@ def publish_offer(request):
     if request.method == 'POST':
         form = formOferta(request.POST, request.FILES)
         if form.is_valid():
-            form.instance.usuario = request.user
-            oferta = form.save()
-            imgs = [
-                ImagenesOferta(imagen=image)
-                for image in request.FILES.getlist('imagenes')
-            ]
-            ImagenesOferta.objects.bulk_create(imgs)
-            oferta.imagenes.add(*imgs)
-            return redirect('home')
+            with transaction.atomic():
+                form.instance.usuario = request.user
+                oferta = form.save()
+                for image in request.FILES.getlist('imagenes'):
+                    img = ImagenesOferta.objects.create(imagen=image)
+                    oferta.imagenes.add(img)
+                # imgs = [
+                #     ImagenesOferta(imagen=image)
+                #     for image in request.FILES.getlist('imagenes')
+                # ]
+                # ImagenesOferta.objects.bulk_create(imgs)
+                # oferta.imagenes.add(*imgs)
+                return redirect('home')
         else:
             messages.error(request, form.errors)
             return render(request, 'publicar_oferta.html', {
