@@ -85,10 +85,14 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://revenue:XIW7h5yrhgf6rVX4mpE96uHbesRXbbMh@dpg-cie99rtph6etu3um4p70-a/revenue_qslf',
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': config('DB_ENGINE'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': '',
+        'HOST': config('DB_HOST'),
+        'PORT': ''
+    }
 }
 
 AUTH_USER_MODEL = 'authentication.Usuario'
